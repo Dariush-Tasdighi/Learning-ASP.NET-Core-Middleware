@@ -3,28 +3,28 @@
 // **************************************************
 // Default
 // **************************************************
-//using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Builder;
 
-//var builder =
-//	Microsoft.AspNetCore.Builder
-//	.WebApplication.CreateBuilder(args);
+var builder =
+	Microsoft.AspNetCore.Builder
+	.WebApplication.CreateBuilder(args);
 
-//var app =
-//	builder.Build();
+var app =
+	builder.Build();
 
-//// MapGet() -> using Microsoft.AspNetCore.Builder;
-//app.MapGet("/", () => "Hello World (1)!");
+// MapGet() -> using Microsoft.AspNetCore.Builder;
+app.MapGet("/", () => "Hello World (1)!");
 
-////app.MapGet("/", () =>
-////{
-////	return "Hello World (1)!";
-////});
+//app.MapGet("/", () =>
+//{
+//	return "Hello World (1)!";
+//});
 
-////app.MapPost("/", () => "Hello World (Post)!");
-////app.MapPut("/", () => "Hello World (Put)!");
-////app.MapDelete("/", () => "Hello World (Delete)!");
+//app.MapPost("/", () => "Hello World (Post)!");
+//app.MapPut("/", () => "Hello World (Put)!");
+//app.MapDelete("/", () => "Hello World (Delete)!");
 
-//app.Run();
+app.Run();
 // **************************************************
 // **************************************************
 // **************************************************
@@ -735,27 +735,27 @@
 //
 // https://localhost:7271/index.html
 // **************************************************
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Builder;
+//using Microsoft.AspNetCore.Http;
+//using Microsoft.AspNetCore.Builder;
 
-var builder =
-	Microsoft.AspNetCore.Builder
-	.WebApplication.CreateBuilder(args);
+//var builder =
+//	Microsoft.AspNetCore.Builder
+//	.WebApplication.CreateBuilder(args);
 
-var app =
-	builder.Build();
+//var app =
+//	builder.Build();
 
-// Run() -> using Microsoft.AspNetCore.Builder;
-app.Run(async context =>
-{
-	// WriteAsync() -> using Microsoft.AspNetCore.Http;
-	await context.Response.WriteAsync("Hello World (33)!");
-});
+//// Run() -> using Microsoft.AspNetCore.Builder;
+//app.Run(async context =>
+//{
+//	// WriteAsync() -> using Microsoft.AspNetCore.Http;
+//	await context.Response.WriteAsync("Hello World (33)!");
+//});
 
-// UseStaticFiles() -> using Microsoft.AspNetCore.Builder;
-app.UseStaticFiles();
+//// UseStaticFiles() -> using Microsoft.AspNetCore.Builder;
+//app.UseStaticFiles();
 
-app.Run();
+//app.Run();
 // **************************************************
 // **************************************************
 // **************************************************
