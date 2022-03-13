@@ -3,28 +3,28 @@
 // **************************************************
 // Default
 // **************************************************
-using Microsoft.AspNetCore.Builder;
+//using Microsoft.AspNetCore.Builder;
 
-var builder =
-	Microsoft.AspNetCore.Builder
-	.WebApplication.CreateBuilder(args);
+//var builder =
+//	Microsoft.AspNetCore.Builder
+//	.WebApplication.CreateBuilder(args);
 
-var app =
-	builder.Build();
+//var app =
+//	builder.Build();
 
-// MapGet() -> using Microsoft.AspNetCore.Builder;
-app.MapGet("/", () => "Hello World (1)!");
+//// MapGet() -> using Microsoft.AspNetCore.Builder;
+//app.MapGet("/", () => "Hello World (1)!");
 
-//app.MapGet("/", () =>
-//{
-//	return "Hello World (1)!";
-//});
+////app.MapGet("/", () =>
+////{
+////	return "Hello World (1)!";
+////});
 
-//app.MapPost("/", () => "Hello World (Post)!");
-//app.MapPut("/", () => "Hello World (Put)!");
-//app.MapDelete("/", () => "Hello World (Delete)!");
+////app.MapPost("/", () => "Hello World (Post)!");
+////app.MapPut("/", () => "Hello World (Put)!");
+////app.MapDelete("/", () => "Hello World (Delete)!");
 
-app.Run();
+//app.Run();
 // **************************************************
 // **************************************************
 // **************************************************
@@ -33,8 +33,10 @@ app.Run();
 // **************************************************
 // **************************************************
 // https://docs.microsoft.com/en-us/aspnet/core/fundamentals/middleware/
-// https://docs.microsoft.com/en-us/aspnet/core/fundamentals/minimal-apis/
+// https://docs.microsoft.com/en-us/aspnet/core/fundamentals/middleware/write/
+//
 // https://docs.microsoft.com/en-us/aspnet/core/tutorials/min-web-api/
+// https://docs.microsoft.com/en-us/aspnet/core/fundamentals/minimal-apis/
 // **************************************************
 // **************************************************
 // **************************************************
@@ -239,7 +241,7 @@ app.Run();
 //	// WriteAsync() -> using Microsoft.AspNetCore.Http;
 //	await context.Response.WriteAsync("<p>Hello World (12)!</p>");
 
-//	await next();
+//	await next.Invoke();
 
 //	// WriteAsync() -> using Microsoft.AspNetCore.Http;
 //	await context.Response.WriteAsync("<p>Hello World (18)!</p>");
@@ -251,7 +253,7 @@ app.Run();
 //	// WriteAsync() -> using Microsoft.AspNetCore.Http;
 //	await context.Response.WriteAsync("<p>Hello World (13)!</p>");
 
-//	await next();
+//	await next.Invoke();
 
 //	// WriteAsync() -> using Microsoft.AspNetCore.Http;
 //	await context.Response.WriteAsync("<p>Hello World (17)!</p>");
@@ -263,7 +265,7 @@ app.Run();
 //	// WriteAsync() -> using Microsoft.AspNetCore.Http;
 //	await context.Response.WriteAsync("<p>Hello World (14)!</p>");
 
-//	await next();
+//	await next.Invoke();
 
 //	// WriteAsync() -> using Microsoft.AspNetCore.Http;
 //	await context.Response.WriteAsync("<p>Hello World (16)!</p>");
@@ -718,7 +720,7 @@ app.Run();
 
 //app.Run(async context =>
 //{
-//	await context.Response.WriteAsync("<h1>404 - File Not Found!</h1>");
+//	await context.Response.WriteAsync("<h1>Error 404 - File Not Found!</h1>");
 //});
 
 //app.Run();
@@ -762,23 +764,32 @@ app.Run();
 
 
 
-
-
-
-
-
-
-
 // **************************************************
 // **************************************************
 // **************************************************
 // Learn 17
 // **************************************************
-//public void Configure
-//	(Microsoft.AspNetCore.Builder.IApplicationBuilder app)
+//using Microsoft.AspNetCore.Http;
+//using Microsoft.AspNetCore.Builder;
+
+//var builder =
+//	Microsoft.AspNetCore.Builder
+//	.WebApplication.CreateBuilder(args);
+
+//var app =
+//	builder.Build();
+
+//// UseMiddleware() -> using Microsoft.AspNetCore.Builder;
+//app.UseMiddleware<Infrastructure.Middlewares.MyMiddleware>();
+
+//// Run() -> using Microsoft.AspNetCore.Builder;
+//app.Run(async context =>
 //{
-//	app.UseMiddleware<Infrastructure.Middlewares.MyMiddleware1>();
-//}
+//	// WriteAsync() -> using Microsoft.AspNetCore.Http;
+//	await context.Response.WriteAsync("<p>Hello World (35)!</p>");
+//});
+
+//app.Run();
 // **************************************************
 // **************************************************
 // **************************************************
@@ -788,16 +799,27 @@ app.Run();
 // **************************************************
 // Learn 18
 // **************************************************
-//public void Configure
-//	(Microsoft.AspNetCore.Builder.IApplicationBuilder app)
-//{
-//	app.UseMiddleware<Infrastructure.Middlewares.MyMiddleware2>();
+//using Microsoft.AspNetCore.Http;
+//using Microsoft.AspNetCore.Builder;
 
-//	app.Run(async context =>
-//	{
-//		await context.Response.WriteAsync("Hello World (3)!");
-//	});
-//}
+//var builder =
+//	Microsoft.AspNetCore.Builder
+//	.WebApplication.CreateBuilder(args);
+
+//var app =
+//	builder.Build();
+
+//// UseMiddleware() -> using Microsoft.AspNetCore.Builder;
+//app.UseMiddleware<Infrastructure.Middlewares.CustomStaticFilesHandlingMiddleware>();
+
+//// Run() -> using Microsoft.AspNetCore.Builder;
+//app.Run(async context =>
+//{
+//	// WriteAsync() -> using Microsoft.AspNetCore.Http;
+//	await context.Response.WriteAsync("<h1>Error 404 - File Not Found!</h1>");
+//});
+
+//app.Run();
 // **************************************************
 // **************************************************
 // **************************************************
@@ -807,21 +829,28 @@ app.Run();
 // **************************************************
 // Learn 19
 // **************************************************
-// In this lesson we use:
-// Microsoft.AspNetCore.Hosting.IWebHostEnvironment env
-// **************************************************
-//public void Configure
-//	(Microsoft.AspNetCore.Builder.IApplicationBuilder app,
-//	Microsoft.AspNetCore.Hosting.IWebHostEnvironment env)
-//{
-//	// Custom UseStaticFiles
-//	app.UseMiddleware<Infrastructure.Middlewares.MyMiddleware3>();
+//using Microsoft.AspNetCore.Http;
+//using Infrastructure.Middlewares;
+//using Microsoft.AspNetCore.Builder;
 
-//	app.Run(async context =>
-//	{
-//		await context.Response.WriteAsync("Hello World!");
-//	});
-//}
+//var builder =
+//	Microsoft.AspNetCore.Builder
+//	.WebApplication.CreateBuilder(args);
+
+//var app =
+//	builder.Build();
+
+//// UseCustomStaticFiles() -> using Infrastructure.Middlewares;
+//app.UseCustomStaticFiles();
+
+//// Run() -> using Microsoft.AspNetCore.Builder;
+//app.Run(async context =>
+//{
+//	// WriteAsync() -> using Microsoft.AspNetCore.Http;
+//	await context.Response.WriteAsync("<h1>Error 404 - File Not Found!</h1>");
+//});
+
+//app.Run();
 // **************************************************
 // **************************************************
 // **************************************************
@@ -831,12 +860,27 @@ app.Run();
 // **************************************************
 // Learn 20
 // **************************************************
-//public void Configure
-//	(Microsoft.AspNetCore.Builder.IApplicationBuilder app)
-//{
-//	// Custom UseStaticFiles
-//	app.UseMyMiddleware();
-//}
+using Infrastructure.Middlewares;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.DependencyInjection;
+
+var builder =
+	Microsoft.AspNetCore.Builder
+	.WebApplication.CreateBuilder(args);
+
+// AddRazorPages() -> using Microsoft.Extensions.DependencyInjection;
+builder.Services.AddRazorPages();
+
+var app =
+	builder.Build();
+
+// UseCustomStaticFiles() -> using Infrastructure.Middlewares;
+app.UseGlobalException();
+
+// MapRazorPages() -> using Microsoft.AspNetCore.Builder;
+app.MapRazorPages();
+
+app.Run();
 // **************************************************
 // **************************************************
 // **************************************************
