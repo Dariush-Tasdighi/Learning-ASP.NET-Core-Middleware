@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-
-namespace Infrastructure.Middlewares
+﻿namespace Infrastructure.Middlewares
 {
 	public class GlobalExceptionHandlerMiddleware : object
 	{
@@ -21,7 +19,7 @@ namespace Infrastructure.Middlewares
 			}
 			catch //(System.Exception ex)
 			{
-				// Log Error!
+				// Log Error (ex)!
 
 				httpContext.Response.Redirect
 					(location: "/Errors/Error500", permanent: false);

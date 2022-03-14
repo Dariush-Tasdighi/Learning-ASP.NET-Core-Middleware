@@ -160,8 +160,8 @@ namespace Infrastructure.Middlewares
 			InvokeAsync(Microsoft.AspNetCore.Http.HttpContext httpContext,
 			Microsoft.Extensions.Hosting.IHostEnvironment hostEnvironment)
 		{
-			string requestPath =
-				httpContext.Request.Path;
+			var requestPath =
+				httpContext.Request.Path.Value;
 
 			if (string.IsNullOrWhiteSpace(requestPath) || requestPath == "/")
 			{
@@ -190,7 +190,7 @@ namespace Infrastructure.Middlewares
 				return;
 			}
 
-			string? fileExtension =
+			var fileExtension =
 				System.IO.Path.GetExtension(physicalPathName)?.ToLower();
 
 			switch (fileExtension)
@@ -239,7 +239,8 @@ namespace Infrastructure.Middlewares
 				}
 			}
 
-			await httpContext.Response.SendFileAsync(fileName: physicalPathName);
+			await httpContext.Response
+				.SendFileAsync(fileName: physicalPathName);
 		}
 	}
 }
