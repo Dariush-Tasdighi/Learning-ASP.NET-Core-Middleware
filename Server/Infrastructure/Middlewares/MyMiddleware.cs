@@ -4,7 +4,8 @@ namespace Infrastructure.Middlewares
 {
 	public class MyMiddleware : object
 	{
-		//public MyMiddleware1(Microsoft.AspNetCore.Http.RequestDelegate next) : base()
+		//public MyMiddleware
+		//	(Microsoft.AspNetCore.Http.RequestDelegate next) : base()
 		//{
 		//	_next = next;
 		//}
@@ -19,9 +20,7 @@ namespace Infrastructure.Middlewares
 
 		private Microsoft.AspNetCore.Http.RequestDelegate Next { get; }
 
-		public
-			async
-			System.Threading.Tasks.Task
+		public async System.Threading.Tasks.Task
 			InvokeAsync(Microsoft.AspNetCore.Http.HttpContext httpContext)
 		{
 			// اول اجرا می‌شود

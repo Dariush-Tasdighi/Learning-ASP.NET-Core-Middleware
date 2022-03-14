@@ -19,7 +19,7 @@ namespace Infrastructure.Middlewares
 			{
 				await Next(httpContext);
 			}
-			catch (System.Exception ex)
+			catch //(System.Exception ex)
 			{
 				// Log Error!
 

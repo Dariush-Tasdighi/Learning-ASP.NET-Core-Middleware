@@ -3,28 +3,28 @@
 // **************************************************
 // Default
 // **************************************************
-//using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Builder;
 
-//var builder =
-//	Microsoft.AspNetCore.Builder
-//	.WebApplication.CreateBuilder(args);
+var builder =
+	Microsoft.AspNetCore.Builder
+	.WebApplication.CreateBuilder(args);
 
-//var app =
-//	builder.Build();
+var app =
+	builder.Build();
 
-//// MapGet() -> using Microsoft.AspNetCore.Builder;
-//app.MapGet("/", () => "Hello World (1)!");
+// MapGet() -> using Microsoft.AspNetCore.Builder;
+app.MapGet("/", () => "Hello World (1)!");
 
-////app.MapGet("/", () =>
-////{
-////	return "Hello World (1)!";
-////});
+//app.MapGet("/", () =>
+//{
+//	return "Hello World (1)!";
+//});
 
-////app.MapPost("/", () => "Hello World (Post)!");
-////app.MapPut("/", () => "Hello World (Put)!");
-////app.MapDelete("/", () => "Hello World (Delete)!");
+//app.MapPost("/", () => "Hello World (Post)!");
+//app.MapPut("/", () => "Hello World (Put)!");
+//app.MapDelete("/", () => "Hello World (Delete)!");
 
-//app.Run();
+app.Run();
 // **************************************************
 // **************************************************
 // **************************************************
@@ -762,8 +762,6 @@
 // **************************************************
 // **************************************************
 
-
-
 // **************************************************
 // **************************************************
 // **************************************************
@@ -810,7 +808,7 @@
 //	builder.Build();
 
 //// UseMiddleware() -> using Microsoft.AspNetCore.Builder;
-//app.UseMiddleware<Infrastructure.Middlewares.CustomStaticFilesHandlingMiddleware>();
+//app.UseMiddleware<Infrastructure.Middlewares.CustomStaticFilesHandlerMiddleware>();
 
 //// Run() -> using Microsoft.AspNetCore.Builder;
 //app.Run(async context =>
@@ -860,27 +858,27 @@
 // **************************************************
 // Learn 20
 // **************************************************
-using Infrastructure.Middlewares;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.Extensions.DependencyInjection;
+//using Infrastructure.Middlewares;
+//using Microsoft.AspNetCore.Builder;
+//using Microsoft.Extensions.DependencyInjection;
 
-var builder =
-	Microsoft.AspNetCore.Builder
-	.WebApplication.CreateBuilder(args);
+//var builder =
+//	Microsoft.AspNetCore.Builder
+//	.WebApplication.CreateBuilder(args);
 
-// AddRazorPages() -> using Microsoft.Extensions.DependencyInjection;
-builder.Services.AddRazorPages();
+//// AddRazorPages() -> using Microsoft.Extensions.DependencyInjection;
+//builder.Services.AddRazorPages();
 
-var app =
-	builder.Build();
+//var app =
+//	builder.Build();
 
-// UseCustomStaticFiles() -> using Infrastructure.Middlewares;
-app.UseGlobalException();
+//// UseCustomStaticFiles() -> using Infrastructure.Middlewares;
+//app.UseGlobalException();
 
-// MapRazorPages() -> using Microsoft.AspNetCore.Builder;
-app.MapRazorPages();
+//// MapRazorPages() -> using Microsoft.AspNetCore.Builder;
+//app.MapRazorPages();
 
-app.Run();
+//app.Run();
 // **************************************************
 // **************************************************
 // **************************************************

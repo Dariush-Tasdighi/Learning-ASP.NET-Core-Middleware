@@ -9,17 +9,17 @@ namespace Infrastructure.Middlewares
 		}
 
 		public static Microsoft.AspNetCore.Builder.IApplicationBuilder
-			UseCustomStaticFiles(this Microsoft.AspNetCore.Builder.IApplicationBuilder builder)
+			UseCustomStaticFiles(this Microsoft.AspNetCore.Builder.IApplicationBuilder app)
 		{
 			// UseMiddleware -> //using Microsoft.AspNetCore.Builder;
-			return builder.UseMiddleware<CustomStaticFilesHandlerMiddleware>();
+			return app.UseMiddleware<CustomStaticFilesHandlerMiddleware>();
 		}
 
 		public static Microsoft.AspNetCore.Builder.IApplicationBuilder
-			UseGlobalException(this Microsoft.AspNetCore.Builder.IApplicationBuilder builder)
+			UseGlobalException(this Microsoft.AspNetCore.Builder.IApplicationBuilder app)
 		{
 			// UseMiddleware -> //using Microsoft.AspNetCore.Builder;
-			return builder.UseMiddleware<GlobalExceptionHandlerMiddleware>();
+			return app.UseMiddleware<GlobalExceptionHandlerMiddleware>();
 		}
 	}
 }
