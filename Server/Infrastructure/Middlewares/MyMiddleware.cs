@@ -26,14 +26,16 @@ namespace Infrastructure.Middlewares
 			// اول اجرا می‌شود
 
 			// WriteAsync() -> using Microsoft.AspNetCore.Http;
-			await httpContext.Response.WriteAsync("<p>Hello World (34)!</p>");
+			await httpContext.Response
+				.WriteAsync(text: "<p>Hello World (1)!</p>");
 
 			await Next(httpContext);
 
 			// بعدی اجرا می‌شود Middleware بعد از اجرای شدن
 
 			// WriteAsync() -> using Microsoft.AspNetCore.Http;
-			await httpContext.Response.WriteAsync("<p>Hello World (36)!</p>");
+			await httpContext.Response
+				.WriteAsync(text: "<p>Hello World (3)!</p>");
 		}
 	}
 }

@@ -414,61 +414,61 @@
 // https://localhost:7271/test/test1	->	24
 // https://localhost:7271/test/test2	->	25
 // **************************************************
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Builder;
+//using Microsoft.AspNetCore.Http;
+//using Microsoft.AspNetCore.Builder;
 
-var builder =
-	Microsoft.AspNetCore.Builder
-	.WebApplication.CreateBuilder(args: args);
+//var builder =
+//	Microsoft.AspNetCore.Builder
+//	.WebApplication.CreateBuilder(args: args);
 
-var app =
-	builder.Build();
+//var app =
+//	builder.Build();
 
-// Map() -> using Microsoft.AspNetCore.Builder;
-app.Map(pathMatch: "/test", configuration: app =>
-{
-	// Map() -> using Microsoft.AspNetCore.Builder;
-	app.Map(pathMatch: "/test1", configuration: app =>
-	{
-		// Run() -> using Microsoft.AspNetCore.Builder;
-		app.Run(handler: async context =>
-		{
-			// WriteAsync() -> using Microsoft.AspNetCore.Http;
-			await context.Response
-				.WriteAsync(text: "<p>Hello World (24)!</p>");
-		});
-	});
+//// Map() -> using Microsoft.AspNetCore.Builder;
+//app.Map(pathMatch: "/test", configuration: app =>
+//{
+//	// Map() -> using Microsoft.AspNetCore.Builder;
+//	app.Map(pathMatch: "/test1", configuration: app =>
+//	{
+//		// Run() -> using Microsoft.AspNetCore.Builder;
+//		app.Run(handler: async context =>
+//		{
+//			// WriteAsync() -> using Microsoft.AspNetCore.Http;
+//			await context.Response
+//				.WriteAsync(text: "<p>Hello World (24)!</p>");
+//		});
+//	});
 
-	// Map() -> using Microsoft.AspNetCore.Builder;
-	app.Map(pathMatch: "/test2", configuration: app =>
-	{
-		// Run() -> using Microsoft.AspNetCore.Builder;
-		app.Run(handler: async context =>
-		{
-			// WriteAsync() -> using Microsoft.AspNetCore.Http;
-			await context.Response
-				.WriteAsync(text: "<p>Hello World (25)!</p>");
-		});
-	});
+//	// Map() -> using Microsoft.AspNetCore.Builder;
+//	app.Map(pathMatch: "/test2", configuration: app =>
+//	{
+//		// Run() -> using Microsoft.AspNetCore.Builder;
+//		app.Run(handler: async context =>
+//		{
+//			// WriteAsync() -> using Microsoft.AspNetCore.Http;
+//			await context.Response
+//				.WriteAsync(text: "<p>Hello World (25)!</p>");
+//		});
+//	});
 
-	// Run() -> using Microsoft.AspNetCore.Builder;
-	app.Run(handler: async context =>
-	{
-		// WriteAsync() -> using Microsoft.AspNetCore.Http;
-		await context.Response
-			.WriteAsync(text: "<h1>Error 404 - You can just use 'test1' or 'test2'!</h1>");
-	});
-});
+//	// Run() -> using Microsoft.AspNetCore.Builder;
+//	app.Run(handler: async context =>
+//	{
+//		// WriteAsync() -> using Microsoft.AspNetCore.Http;
+//		await context.Response
+//			.WriteAsync(text: "<h1>Error 404 - You can just use 'test1' or 'test2'!</h1>");
+//	});
+//});
 
-// Run() -> using Microsoft.AspNetCore.Builder;
-app.Run(handler: async context =>
-{
-	// WriteAsync() -> using Microsoft.AspNetCore.Http;
-	await context.Response
-		.WriteAsync(text: "<h1>Error 404 - Content Not Found!</h1>");
-});
+//// Run() -> using Microsoft.AspNetCore.Builder;
+//app.Run(handler: async context =>
+//{
+//	// WriteAsync() -> using Microsoft.AspNetCore.Http;
+//	await context.Response
+//		.WriteAsync(text: "<h1>Error 404 - Content Not Found!</h1>");
+//});
 
-app.Run();
+//app.Run();
 // **************************************************
 // **************************************************
 // **************************************************
@@ -493,32 +493,35 @@ app.Run();
 //	builder.Build();
 
 //// Map() -> using Microsoft.AspNetCore.Builder;
-//app.Map("/test/test1", app =>
+//app.Map(pathMatch: "/test/test1", configuration: app =>
 //{
 //	// Run() -> using Microsoft.AspNetCore.Builder;
-//	app.Run(async context =>
+//	app.Run(handler: async context =>
 //	{
 //		// WriteAsync() -> using Microsoft.AspNetCore.Http;
-//		await context.Response.WriteAsync(text: "<p>Hello World (27)!</p>");
+//		await context.Response
+//			.WriteAsync(text: "<p>Hello World (27)!</p>");
 //	});
 //});
 
 //// Map() -> using Microsoft.AspNetCore.Builder;
-//app.Map("/test/test2", app =>
+//app.Map(pathMatch: "/test/test2", configuration: app =>
 //{
 //	// Run() -> using Microsoft.AspNetCore.Builder;
-//	app.Run(async context =>
+//	app.Run(handler: async context =>
 //	{
 //		// WriteAsync() -> using Microsoft.AspNetCore.Http;
-//		await context.Response.WriteAsync(text: "<p>Hello World (28)!</p>");
+//		await context.Response
+//			.WriteAsync(text: "<p>Hello World (28)!</p>");
 //	});
 //});
 
 //// Run() -> using Microsoft.AspNetCore.Builder;
-//app.Run(async context =>
+//app.Run(handler: async context =>
 //{
 //	// WriteAsync() -> using Microsoft.AspNetCore.Http;
-//	await context.Response.WriteAsync(text: "<p>Hello World (29)!</p>");
+//	await context.Response
+//		.WriteAsync(text: "<h1>Error 404 - Content Not Found!</h1>");
 //});
 
 //app.Run();
@@ -546,10 +549,10 @@ app.Run();
 //	builder.Build();
 
 //// MapWhen() -> using Microsoft.AspNetCore.Builder;
-//app.MapWhen(context => context.Request.Query.ContainsKey(key: "age"), app =>
+//app.MapWhen(predicate: context => context.Request.Query.ContainsKey(key: "age"), app =>
 //{
 //	// Run() -> using Microsoft.AspNetCore.Builder;
-//	app.Run(async context =>
+//	app.Run(handler: async context =>
 //	{
 //		// WriteAsync() -> using Microsoft.AspNetCore.Http;
 //		await context.Response.WriteAsync(text: "<p>Hello World (30)!</p>");
@@ -557,7 +560,7 @@ app.Run();
 //});
 
 //// MapWhen() -> using Microsoft.AspNetCore.Builder;
-//app.MapWhen(context =>
+//app.MapWhen(predicate: context =>
 //{
 //	if (context.Request.Path != null &&
 //		context.Request.Path.Value != null &&
@@ -573,18 +576,20 @@ app.Run();
 //app =>
 //{
 //	// Run() -> using Microsoft.AspNetCore.Builder;
-//	app.Run(async context =>
+//	app.Run(handler: async context =>
 //	{
 //		// WriteAsync() -> using Microsoft.AspNetCore.Http;
-//		await context.Response.WriteAsync(text: "<p>Hello World (31)!</p>");
+//		await context.Response
+//			.WriteAsync(text: "<p>Hello World (31)!</p>");
 //	});
 //});
 
 //// Run() -> using Microsoft.AspNetCore.Builder;
-//app.Run(async context =>
+//app.Run(handler: async context =>
 //{
 //	// WriteAsync() -> using Microsoft.AspNetCore.Http;
-//	await context.Response.WriteAsync(text: "<p>Hello World (32)!</p>");
+//	await context.Response
+//		.WriteAsync(text: "<h1>Error 404 - Content Not Found!</h1>");
 //});
 
 //app.Run();
@@ -674,10 +679,11 @@ app.Run();
 //app.UseStaticFiles();
 
 //// Run() -> using Microsoft.AspNetCore.Builder;
-//app.Run(async context =>
+//app.Run(handler: async context =>
 //{
 //	// WriteAsync() -> using Microsoft.AspNetCore.Http;
-//	await context.Response.WriteAsync(text: "<h1>Error 404 - File Not Found!</h1>");
+//	await context.Response
+//		.WriteAsync(text: "<h1>Error 404 - Content Not Found!</h1>");
 //});
 
 //app.Run();
@@ -708,13 +714,19 @@ app.Run();
 //	app.Environment.ContentRootPath;
 
 //// Map() -> using Microsoft.AspNetCore.Builder;
-//app.Map("/index.html", app =>
+//app.Map(pathMatch: "/index.html", configuration: app =>
 //{
 //	// Run() -> using Microsoft.AspNetCore.Builder;
 //	app.Run(async context =>
 //	{
 //		//string physicalPathName =
-//		//	$"{contentRootPath}\\wwwroot\\index.html";
+//		//	$"C:\\inetpub\\Users\\IranianExperets\\wwwroot\\index.html";
+
+//		//string physicalPathName =
+//		//	"{contentRootPath}" + "wwwroot\\index.html";
+
+//		//string physicalPathName =
+//		//	$"{contentRootPath}wwwroot\\index.html";
 
 //		string physicalPathName =
 //			System.IO.Path.Combine(contentRootPath, "wwwroot", "index.html");
@@ -722,20 +734,26 @@ app.Run();
 //		if (System.IO.File.Exists(physicalPathName))
 //		{
 //			// برنامه را یک بار بدون دو دستور ذیل اجرا می‌کنیم
-//			context.Response.StatusCode = 200;
-//			context.Response.ContentType = "text/html"; // Mime Type = Content Type = ذات فایل
+//			//context.Response.StatusCode = 200;
+
+//			context.Response.ContentType =
+//				"text/html"; // Mime Type = Content Type = ذات یا ماهیت فایل
+
+//			//context.Response.ContentType =
+//			//	"alaki/dolaki"; // Mime Type = Content Type = ذات یا ماهیت فایل
 
 //			// SendFileAsync() -> using Microsoft.AspNetCore.Http;
-//			await context.Response.SendFileAsync(fileName: physicalPathName);
+//			await context.Response
+//				.SendFileAsync(fileName: physicalPathName);
 //		}
 //	});
 //});
 
 //// Map() -> using Microsoft.AspNetCore.Builder;
-//app.Map("/images/Dariush.jpg", app =>
+//app.Map(pathMatch: "/images/Dariush.jpg", configuration: app =>
 //{
 //	// Run() -> using Microsoft.AspNetCore.Builder;
-//	app.Run(async context =>
+//	app.Run(handler: async context =>
 //	{
 //		string physicalPathName =
 //			System.IO.Path.Combine(contentRootPath, "wwwroot\\images", "Dariush.jpg");
@@ -746,14 +764,16 @@ app.Run();
 //			context.Response.ContentType = "image/jpeg";
 
 //			// SendFileAsync() -> using Microsoft.AspNetCore.Http;
-//			await context.Response.SendFileAsync(fileName: physicalPathName);
+//			await context.Response
+//				.SendFileAsync(fileName: physicalPathName);
 //		}
 //	});
 //});
 
 //app.Run(async context =>
 //{
-//	await context.Response.WriteAsync(text: "<h1>Error 404 - File Not Found!</h1>");
+//	await context.Response
+//		.WriteAsync(text: "<h1>Error 404 - Content Not Found!</h1>");
 //});
 
 //app.Run();
@@ -781,10 +801,11 @@ app.Run();
 //	builder.Build();
 
 //// Run() -> using Microsoft.AspNetCore.Builder;
-//app.Run(async context =>
+//app.Run(handler: async context =>
 //{
 //	// WriteAsync() -> using Microsoft.AspNetCore.Http;
-//	await context.Response.WriteAsync(text: "Hello World (33)!");
+//	await context.Response
+//		.WriteAsync(text: "Hello World!");
 //});
 
 //// UseStaticFiles() -> using Microsoft.AspNetCore.Builder;
@@ -814,10 +835,11 @@ app.Run();
 //app.UseMiddleware<Infrastructure.Middlewares.MyMiddleware>();
 
 //// Run() -> using Microsoft.AspNetCore.Builder;
-//app.Run(async context =>
+//app.Run(handler: async context =>
 //{
-//	// WriteAsync() -> using Microsoft.AspNetCore.Http;
-//	await context.Response.WriteAsync(text: "<p>Hello World (35)!</p>");
+//	// WriteAsync()-> using Microsoft.AspNetCore.Http;
+//	await context.Response
+//		.WriteAsync(text: "<p>Hello World (2)!</p>");
 //});
 
 //app.Run();
@@ -841,13 +863,15 @@ app.Run();
 //	builder.Build();
 
 //// UseMiddleware() -> using Microsoft.AspNetCore.Builder;
-//app.UseMiddleware<Infrastructure.Middlewares.CustomStaticFilesHandlerMiddleware>();
+//app.UseMiddleware<Infrastructure
+//	.Middlewares.CustomStaticFilesHandlerMiddleware>();
 
 //// Run() -> using Microsoft.AspNetCore.Builder;
-//app.Run(async context =>
+//app.Run(handler: async context =>
 //{
 //	// WriteAsync() -> using Microsoft.AspNetCore.Http;
-//	await context.Response.WriteAsync(text: "<h1>Error 404 - File Not Found!</h1>");
+//	await context.Response
+//		.WriteAsync(text: "<h1>Error 404 - Content Not Found!</h1>");
 //});
 
 //app.Run();
@@ -860,28 +884,29 @@ app.Run();
 // **************************************************
 // Learn 19
 // **************************************************
-//using Microsoft.AspNetCore.Http;
-//using Infrastructure.Middlewares;
-//using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Http;
+using Infrastructure.Middlewares;
+using Microsoft.AspNetCore.Builder;
 
-//var builder =
-//	Microsoft.AspNetCore.Builder
-//	.WebApplication.CreateBuilder(args: args);
+var builder =
+	Microsoft.AspNetCore.Builder
+	.WebApplication.CreateBuilder(args: args);
 
-//var app =
-//	builder.Build();
+var app =
+	builder.Build();
 
-//// UseCustomStaticFiles() -> using Infrastructure.Middlewares;
-//app.UseCustomStaticFiles();
+// UseCustomStaticFiles() -> using Infrastructure.Middlewares;
+app.UseCustomStaticFiles();
 
-//// Run() -> using Microsoft.AspNetCore.Builder;
-//app.Run(async context =>
-//{
-//	// WriteAsync() -> using Microsoft.AspNetCore.Http;
-//	await context.Response.WriteAsync(text: "<h1>Error 404 - File Not Found!</h1>");
-//});
+// Run() -> using Microsoft.AspNetCore.Builder;
+app.Run(async context =>
+{
+	// WriteAsync() -> using Microsoft.AspNetCore.Http;
+	await context.Response
+		.WriteAsync(text: "<h1>Error 404 - Content Not Found!</h1>");
+});
 
-//app.Run();
+app.Run();
 // **************************************************
 // **************************************************
 // **************************************************
