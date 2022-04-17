@@ -21,5 +21,12 @@ namespace Infrastructure.Middlewares
 			// UseMiddleware -> //using Microsoft.AspNetCore.Builder;
 			return app.UseMiddleware<GlobalExceptionHandlerMiddleware>();
 		}
+
+		//public static Microsoft.AspNetCore.Builder.IApplicationBuilder
+		//	UseSomething(this Microsoft.AspNetCore.Builder.IApplicationBuilder app, int x, int y)
+		//{
+		//	// UseMiddleware -> //using Microsoft.AspNetCore.Builder;
+		//	return app.UseMiddleware<GlobalExceptionHandlerMiddleware>();
+		//}
 	}
 }

@@ -3,43 +3,43 @@
 // **************************************************
 // Default
 // **************************************************
-//using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Builder;
 
-//var builder =
-//	Microsoft.AspNetCore.Builder
-//	.WebApplication.CreateBuilder(args: args);
+var builder =
+	Microsoft.AspNetCore.Builder
+	.WebApplication.CreateBuilder(args: args);
 
-//var app =
-//	builder.Build();
+var app =
+	builder.Build();
 
-//// MapGet() -> using Microsoft.AspNetCore.Builder;
-////app.MapGet("/", () => "Hello World (1)!");
+// MapGet() -> using Microsoft.AspNetCore.Builder;
+//app.MapGet("/", () => "Hello World!");
 
-//// MapGet() -> using Microsoft.AspNetCore.Builder;
-//app.MapGet(pattern: "/", handler: () => "Hello World (1)!");
+// MapGet() -> using Microsoft.AspNetCore.Builder;
+app.MapGet(pattern: "/", handler: () => "Hello World!");
 
-////app.MapGet(pattern: "/", handler: () =>
-////{
-////	var result = "Hello";
+//app.MapGet(pattern: "/", handler: () =>
+//{
+//	var result = "Hello";
 
-////	if (1 == 1)
-////	{
-////		result += " World (1)!";
-////	}
+//	if (1 == 1)
+//	{
+//		result += " World!";
+//	}
 
-////	return result;
-////});
+//	return result;
+//});
 
-//// MapPost() -> using Microsoft.AspNetCore.Builder;
-//app.MapPost(pattern: "/", handler: () => "Hello World (Post)!");
+// MapPost() -> using Microsoft.AspNetCore.Builder;
+app.MapPost(pattern: "/", handler: () => "Hello World (Post)!");
 
-//// MapPut() -> using Microsoft.AspNetCore.Builder;
-//app.MapPut(pattern: "/", handler: () => "Hello World (Put)!");
+// MapPut() -> using Microsoft.AspNetCore.Builder;
+app.MapPut(pattern: "/", handler: () => "Hello World (Put)!");
 
-//// MapDelete() -> using Microsoft.AspNetCore.Builder;
-//app.MapDelete(pattern: "/", handler: () => "Hello World (Delete)!");
+// MapDelete() -> using Microsoft.AspNetCore.Builder;
+app.MapDelete(pattern: "/", handler: () => "Hello World (Delete)!");
 
-//app.Run();
+app.Run();
 // **************************************************
 // **************************************************
 // **************************************************
@@ -77,7 +77,7 @@
 //app.Run(handler: async context =>
 //{
 //	// WriteAsync() -> using Microsoft.AspNetCore.Http;
-//	await context.Response.WriteAsync(text: "Hello World (2)!");
+//	await context.Response.WriteAsync(text: "Hello World!");
 //});
 
 //app.Run();
@@ -104,7 +104,7 @@
 //app.Run(handler: async context =>
 //{
 //	// WriteAsync() -> using Microsoft.AspNetCore.Http;
-//	await context.Response.WriteAsync(text: "Hello World (3)!");
+//	await context.Response.WriteAsync(text: "Hello World (1)!");
 //});
 
 //// Note: Below code does not work!
@@ -113,7 +113,7 @@
 //app.Run(handler: async context =>
 //{
 //	// WriteAsync() -> using Microsoft.AspNetCore.Http;
-//	await context.Response.WriteAsync(text: "Hello World (4)!");
+//	await context.Response.WriteAsync(text: "Hello World (2)!");
 //});
 
 //app.Run();
@@ -140,7 +140,7 @@
 //app.Use(middleware: async (context, next) =>
 //{
 //	// WriteAsync() -> using Microsoft.AspNetCore.Http;
-//	await context.Response.WriteAsync(text: "Hello World (5)!");
+//	await context.Response.WriteAsync(text: "Hello World (1)!");
 
 //	//await next();
 
@@ -152,7 +152,7 @@
 //app.Run(handler: async context =>
 //{
 //	// WriteAsync() -> using Microsoft.AspNetCore.Http;
-//	await context.Response.WriteAsync(text: "Hello World (6)!");
+//	await context.Response.WriteAsync(text: "Hello World (2)!");
 //});
 
 //app.Run();
@@ -179,7 +179,7 @@
 //app.Use(middleware: async (context, next) =>
 //{
 //	// WriteAsync() -> using Microsoft.AspNetCore.Http;
-//	await context.Response.WriteAsync(text: "Hello World (7)!");
+//	await context.Response.WriteAsync(text: "Hello World (1)!");
 
 //	if (1 == 2)
 //	{
@@ -193,7 +193,7 @@
 //app.Run(handler: async context =>
 //{
 //	// WriteAsync() -> using Microsoft.AspNetCore.Http;
-//	await context.Response.WriteAsync(text: "Hello World (8)!");
+//	await context.Response.WriteAsync(text: "Hello World (2)!");
 //});
 
 //app.Run();
@@ -220,19 +220,19 @@
 //app.Use(middleware: async (context, next) =>
 //{
 //	// WriteAsync() -> using Microsoft.AspNetCore.Http;
-//	await context.Response.WriteAsync(text: "Hello World (9)!");
+//	await context.Response.WriteAsync(text: "Hello World (1)!");
 
 //	await next.Invoke();
 
 //	// WriteAsync() -> using Microsoft.AspNetCore.Http;
-//	await context.Response.WriteAsync(text: "Hello World (11)!");
+//	await context.Response.WriteAsync(text: "Hello World (3)!");
 //});
 
 //// Run() -> using Microsoft.AspNetCore.Builder;
 //app.Run(handler: async context =>
 //{
 //	// WriteAsync() -> using Microsoft.AspNetCore.Http;
-//	await context.Response.WriteAsync(text: "Hello World (10)!");
+//	await context.Response.WriteAsync(text: "Hello World (2)!");
 //});
 
 //app.Run();
@@ -259,43 +259,43 @@
 //app.Use(middleware: async (context, next) =>
 //{
 //	// WriteAsync() -> using Microsoft.AspNetCore.Http;
-//	await context.Response.WriteAsync(text: "<p>Hello World (12)!</p>");
+//	await context.Response.WriteAsync(text: "<p>Hello World (1)!</p>");
 
 //	await next.Invoke();
 
 //	// WriteAsync() -> using Microsoft.AspNetCore.Http;
-//	await context.Response.WriteAsync(text: "<p>Hello World (18)!</p>");
+//	await context.Response.WriteAsync(text: "<p>Hello World (7)!</p>");
 //});
 
 //// Use() -> using Microsoft.AspNetCore.Builder;
 //app.Use(middleware: async (context, next) =>
 //{
 //	// WriteAsync() -> using Microsoft.AspNetCore.Http;
-//	await context.Response.WriteAsync(text: "<p>Hello World (13)!</p>");
+//	await context.Response.WriteAsync(text: "<p>Hello World (2)!</p>");
 
 //	await next.Invoke();
 
 //	// WriteAsync() -> using Microsoft.AspNetCore.Http;
-//	await context.Response.WriteAsync(text: "<p>Hello World (17)!</p>");
+//	await context.Response.WriteAsync(text: "<p>Hello World (6)!</p>");
 //});
 
 //// Use() -> using Microsoft.AspNetCore.Builder;
 //app.Use(middleware: async (context, next) =>
 //{
 //	// WriteAsync() -> using Microsoft.AspNetCore.Http;
-//	await context.Response.WriteAsync(text: "<p>Hello World (14)!</p>");
+//	await context.Response.WriteAsync(text: "<p>Hello World (3)!</p>");
 
 //	await next.Invoke();
 
 //	// WriteAsync() -> using Microsoft.AspNetCore.Http;
-//	await context.Response.WriteAsync(text: "<p>Hello World (16)!</p>");
+//	await context.Response.WriteAsync(text: "<p>Hello World (5)!</p>");
 //});
 
 //// Run() -> using Microsoft.AspNetCore.Builder;
 //app.Run(handler: async context =>
 //{
 //	// WriteAsync() -> using Microsoft.AspNetCore.Http;
-//	await context.Response.WriteAsync(text: "<p>Hello World (15)!</p>");
+//	await context.Response.WriteAsync(text: "<p>Hello World (4)!</p>");
 //});
 
 //app.Run();
@@ -341,7 +341,7 @@
 //	app.Run(handler: async context =>
 //	{
 //		// WriteAsync() -> using Microsoft.AspNetCore.Http;
-//		await context.Response.WriteAsync(text: "<p>Hello World (20)!</p>");
+//		await context.Response.WriteAsync(text: "<p>Hello World (1)!</p>");
 //	});
 //}
 
@@ -353,7 +353,7 @@
 //	app.Run(handler: async context =>
 //	{
 //		// WriteAsync() -> using Microsoft.AspNetCore.Http;
-//		await context.Response.WriteAsync(text: "<p>Hello World (21)!</p>");
+//		await context.Response.WriteAsync(text: "<p>Hello World (2)!</p>");
 //	});
 //}
 
@@ -388,7 +388,7 @@
 //	{
 //		// WriteAsync() -> using Microsoft.AspNetCore.Http;
 //		await context.Response
-//			.WriteAsync(text: "<p>Hello World (22)!</p>");
+//			.WriteAsync(text: "<p>Hello World!</p>");
 //	});
 //});
 
@@ -435,7 +435,7 @@
 //		{
 //			// WriteAsync() -> using Microsoft.AspNetCore.Http;
 //			await context.Response
-//				.WriteAsync(text: "<p>Hello World (24)!</p>");
+//				.WriteAsync(text: "<p>Hello World (1)!</p>");
 //		});
 //	});
 
@@ -447,7 +447,7 @@
 //		{
 //			// WriteAsync() -> using Microsoft.AspNetCore.Http;
 //			await context.Response
-//				.WriteAsync(text: "<p>Hello World (25)!</p>");
+//				.WriteAsync(text: "<p>Hello World (2)!</p>");
 //		});
 //	});
 
@@ -500,7 +500,7 @@
 //	{
 //		// WriteAsync() -> using Microsoft.AspNetCore.Http;
 //		await context.Response
-//			.WriteAsync(text: "<p>Hello World (27)!</p>");
+//			.WriteAsync(text: "<p>Hello World (1)!</p>");
 //	});
 //});
 
@@ -512,7 +512,7 @@
 //	{
 //		// WriteAsync() -> using Microsoft.AspNetCore.Http;
 //		await context.Response
-//			.WriteAsync(text: "<p>Hello World (28)!</p>");
+//			.WriteAsync(text: "<p>Hello World (2)!</p>");
 //	});
 //});
 
@@ -555,7 +555,7 @@
 //	app.Run(handler: async context =>
 //	{
 //		// WriteAsync() -> using Microsoft.AspNetCore.Http;
-//		await context.Response.WriteAsync(text: "<p>Hello World (30)!</p>");
+//		await context.Response.WriteAsync(text: "<p>Hello World (1)!</p>");
 //	});
 //});
 
@@ -580,7 +580,7 @@
 //	{
 //		// WriteAsync() -> using Microsoft.AspNetCore.Http;
 //		await context.Response
-//			.WriteAsync(text: "<p>Hello World (31)!</p>");
+//			.WriteAsync(text: "<p>Hello World (2)!</p>");
 //	});
 //});
 
@@ -884,29 +884,29 @@
 // **************************************************
 // Learn 19
 // **************************************************
-using Microsoft.AspNetCore.Http;
-using Infrastructure.Middlewares;
-using Microsoft.AspNetCore.Builder;
+//using Microsoft.AspNetCore.Http;
+//using Infrastructure.Middlewares;
+//using Microsoft.AspNetCore.Builder;
 
-var builder =
-	Microsoft.AspNetCore.Builder
-	.WebApplication.CreateBuilder(args: args);
+//var builder =
+//	Microsoft.AspNetCore.Builder
+//	.WebApplication.CreateBuilder(args: args);
 
-var app =
-	builder.Build();
+//var app =
+//	builder.Build();
 
-// UseCustomStaticFiles() -> using Infrastructure.Middlewares;
-app.UseCustomStaticFiles();
+//// UseCustomStaticFiles() -> using Infrastructure.Middlewares;
+//app.UseCustomStaticFiles();
 
-// Run() -> using Microsoft.AspNetCore.Builder;
-app.Run(async context =>
-{
-	// WriteAsync() -> using Microsoft.AspNetCore.Http;
-	await context.Response
-		.WriteAsync(text: "<h1>Error 404 - Content Not Found!</h1>");
-});
+//// Run() -> using Microsoft.AspNetCore.Builder;
+//app.Run(async context =>
+//{
+//	// WriteAsync() -> using Microsoft.AspNetCore.Http;
+//	await context.Response
+//		.WriteAsync(text: "<h1>Error 404 - Content Not Found!</h1>");
+//});
 
-app.Run();
+//app.Run();
 // **************************************************
 // **************************************************
 // **************************************************

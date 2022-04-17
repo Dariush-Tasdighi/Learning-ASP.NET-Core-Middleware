@@ -24,7 +24,7 @@
 				httpContext.Response.Redirect
 					(location: "/Errors/Error500", permanent: false);
 
-				// دستور ذیل غلط است
+				// دستور ذیل غلط است و کار نمی‌کند
 				//httpContext.Response.Redirect
 				//	(location: "~/Errors/Error500", permanent: false);
 			}
