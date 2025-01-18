@@ -3,14 +3,14 @@ using Microsoft.AspNetCore.Http;
 
 namespace Infrastructure.Middlewares;
 
-public class GlobalExceptionHandlerMiddleware : object
+public class CustomGlobalExceptionHandlerMiddleware : object
 {
-	public GlobalExceptionHandlerMiddleware(RequestDelegate next) : base()
+	public CustomGlobalExceptionHandlerMiddleware(RequestDelegate next) : base()
 	{
 		Next = next;
 	}
 
-	private RequestDelegate Next { get; }
+	private RequestDelegate Next { get; init; }
 
 	public async Task InvokeAsync(HttpContext httpContext)
 	{
@@ -20,12 +20,12 @@ public class GlobalExceptionHandlerMiddleware : object
 		}
 		catch //(System.Exception ex)
 		{
-			// Log Error (ex)!
+			// Note: Log Error (ex)!
 
 			httpContext.Response.Redirect
 				(location: "/Errors/Error500", permanent: false);
 
-			// (~/): دستور ذیل غلط است و کار نمی‌کند
+			// Note: (~/): دستور ذیل غلط است و کار نمی‌کند
 			//httpContext.Response.Redirect
 			//	(location: "~/Errors/Error500", permanent: false);
 		}

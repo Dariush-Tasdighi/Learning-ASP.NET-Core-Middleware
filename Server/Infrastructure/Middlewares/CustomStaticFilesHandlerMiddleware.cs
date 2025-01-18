@@ -17,8 +17,7 @@ public class CustomStaticFilesHandlerMiddleware : object
 		HostEnvironment = hostEnvironment;
 	}
 
-	private RequestDelegate Next { get; }
-
+	private RequestDelegate Next { get; init; }
 	private IHostEnvironment HostEnvironment { get; }
 
 	public async Task InvokeAsync(HttpContext httpContext)
@@ -46,7 +45,7 @@ public class CustomStaticFilesHandlerMiddleware : object
 		}
 
 		// **************************************************
-		// requestPath: /index.html -> requestPath: index.html
+		// requestPath: "/index.html" -> requestPath: "index.html"
 		//requestPath =
 		//	requestPath.Substring(startIndex: 1);
 
@@ -63,8 +62,8 @@ public class CustomStaticFilesHandlerMiddleware : object
 		// **************************************************
 
 		// **************************************************
-		var physicalPathName =
-			Path.Combine(path1: rootPath, path2: "wwwroot", path3: requestPathValue);
+		var physicalPathName = Path.Combine
+			(path1: rootPath, path2: "wwwroot", path3: requestPathValue);
 
 		// برای بالا بردن امنیت
 		//var physicalPathName =
@@ -144,8 +143,7 @@ public class CustomStaticFilesHandlerMiddleware : object
 		// **************************************************
 
 		// نکته مهم: آدرس فایل باید فیزیکی باشد
-		await httpContext.Response
-			.SendFileAsync(fileName: physicalPathName);
+		await httpContext.Response.SendFileAsync(fileName: physicalPathName);
 	}
 }
 // **************************************************
@@ -162,7 +160,7 @@ public class CustomStaticFilesHandlerMiddleware : object
 //		Next = next;
 //	}
 
-//	private RequestDelegate Next { get; }
+//	private RequestDelegate Next { get; init; }
 
 //	public async Task InvokeAsync
 //		(HttpContext httpContext, IHostEnvironment hostEnvironment)
@@ -188,8 +186,8 @@ public class CustomStaticFilesHandlerMiddleware : object
 //		var rootPath =
 //			hostEnvironment.ContentRootPath;
 
-//		var physicalPathName =
-//			Path.Combine(path1: rootPath, path2: "wwwroot", path3: requestPath);
+//		var physicalPathName = Path.Combine
+//			(path1: rootPath, path2: "wwwroot", path3: requestPath);
 
 //		if (File.Exists(path: physicalPathName) == false)
 //		{
@@ -246,8 +244,7 @@ public class CustomStaticFilesHandlerMiddleware : object
 //			}
 //		}
 
-//		await httpContext.Response
-//			.SendFileAsync(fileName: physicalPathName);
+//		await httpContext.Response.SendFileAsync(fileName: physicalPathName);
 //	}
 //}
 // **************************************************

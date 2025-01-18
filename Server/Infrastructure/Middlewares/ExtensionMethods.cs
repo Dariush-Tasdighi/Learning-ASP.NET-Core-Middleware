@@ -2,12 +2,8 @@
 
 namespace Infrastructure.Middlewares;
 
-public static class ExtensionMethods
+public static class ExtensionMethods : object
 {
-	static ExtensionMethods()
-	{
-	}
-
 	public static IApplicationBuilder
 		UseCustomStaticFiles(this IApplicationBuilder app)
 	{
@@ -15,9 +11,9 @@ public static class ExtensionMethods
 	}
 
 	public static IApplicationBuilder
-		UseGlobalException(this IApplicationBuilder app)
+		UseCustomGlobalException(this IApplicationBuilder app)
 	{
-		return app.UseMiddleware<GlobalExceptionHandlerMiddleware>();
+		return app.UseMiddleware<CustomGlobalExceptionHandlerMiddleware>();
 	}
 
 	//public static IApplicationBuilder

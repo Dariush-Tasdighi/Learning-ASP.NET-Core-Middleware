@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Http;
 
 namespace Infrastructure.Middlewares;
+//namespace Server.Infrastructure.Middlewares;
 
 public class MyMiddleware : object
 {
@@ -20,20 +21,19 @@ public class MyMiddleware : object
 	/// <summary>
 	/// Best Practice!
 	/// </summary>
-	private RequestDelegate Next { get; }
+	//private RequestDelegate Next { get; }
+	private RequestDelegate Next { get; init; }
 
 	public async Task InvokeAsync(HttpContext httpContext)
 	{
 		// ابتدا، دستور ذیل اجرا می‌شود
 
-		await httpContext.Response
-			.WriteAsync(text: "<p>Hello World (1)!</p>");
+		await httpContext.Response.WriteAsync(text: "<p>Hello World (1)!</p>");
 
 		await Next(context: httpContext);
 
 		// بعدی، اجرا می‌شود Middleware دستور ذیل، بعد از اجرای شدن
 
-		await httpContext.Response
-			.WriteAsync(text: "<p>Hello World (3)!</p>");
+		await httpContext.Response.WriteAsync(text: "<p>Hello World (3)!</p>");
 	}
 }

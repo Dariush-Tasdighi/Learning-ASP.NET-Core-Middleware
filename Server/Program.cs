@@ -9,35 +9,41 @@ using Microsoft.Extensions.DependencyInjection;
 // **************************************************
 // Default
 // **************************************************
-var builder =
-	WebApplication.CreateBuilder(args: args);
+//var builder =
+//	WebApplication.CreateBuilder(args: args);
 
-var app =
-	builder.Build();
+//var app =
+//	builder.Build();
 
-//app.MapGet("/", () => "Hello World!");
+//// Get One or More
+////app.MapGet("/", () => "Hello World!");
 
-app.MapGet(pattern: "/", handler: () => "Hello World!");
+////app.MapGet(pattern: "/", handler: () => "Hello World!");
 
-//app.MapGet(pattern: "/", handler: () =>
-//{
-//	var result = "Hello";
+////app.MapGet(pattern: "/", handler: () =>
+////{
+////	var result = "Hello";
 
-//	if (1 == 1)
-//	{
-//		result += " World!";
-//	}
+////	if (1 == 1)
+////	{
+////		result += " World!";
+////	}
 
-//	return result;
-//});
+////	return result;
+////});
 
-app.MapPost(pattern: "/", handler: () => "Hello World (Post)!");
+//// Application: Postman
 
-app.MapPut(pattern: "/", handler: () => "Hello World (Put)!");
+//// Create
+//app.MapPost(pattern: "/", handler: () => "Hello World (Post)!");
 
-app.MapDelete(pattern: "/", handler: () => "Hello World (Delete)!");
+//// Edit
+//app.MapPut(pattern: "/", handler: () => "Hello World (Put)!");
 
-app.Run();
+//// Delete
+//app.MapDelete(pattern: "/", handler: () => "Hello World (Delete)!");
+
+//app.Run();
 // **************************************************
 // **************************************************
 // **************************************************
@@ -58,6 +64,11 @@ app.Run();
 // Learn 01
 // **************************************************
 // Build Custom Middleware - Inline Method
+//
+// https://localhost:7271
+// https://localhost:7271/
+// https://localhost:7271/alaki/
+// https://localhost:7271/alaki/dolaki
 // **************************************************
 //var builder =
 //	WebApplication.CreateBuilder(args: args);
@@ -101,7 +112,6 @@ app.Run();
 // **************************************************
 // **************************************************
 
-
 // **************************************************
 // Learn 03
 // **************************************************
@@ -117,7 +127,7 @@ app.Run();
 
 //	//await next();
 
-//	// It is better!
+//	// Best Practice!
 //	await next.Invoke();
 //});
 
@@ -240,7 +250,9 @@ app.Run();
 // **************************************************
 // Learn 07
 // **************************************************
+// https://localhost:7271
 // https://localhost:7271/
+// https://localhost:7271/alaki
 // https://localhost:7271/test1
 // https://localhost:7271/test2
 // **************************************************
@@ -299,15 +311,13 @@ app.Run();
 //{
 //	app.Run(handler: async context =>
 //	{
-//		await context.Response
-//			.WriteAsync(text: "<p>Hello World!</p>");
+//		await context.Response.WriteAsync(text: "<p>Hello World!</p>");
 //	});
 //});
 
 //app.Run(handler: async context =>
 //{
-//	await context.Response
-//		.WriteAsync(text: "<h1>Error 404 - Content Not Found!</h1>");
+//	await context.Response.WriteAsync(text: "<h1>Error 404 - Content Not Found!</h1>");
 //});
 
 //app.Run();
@@ -318,6 +328,8 @@ app.Run();
 // **************************************************
 // Learn 09
 // **************************************************
+// Nested Routing
+//
 // https://localhost:7271/
 // https://localhost:7271/googooli
 // https://localhost:7271/test/
@@ -337,8 +349,7 @@ app.Run();
 //	{
 //		app.Run(handler: async context =>
 //		{
-//			await context.Response
-//				.WriteAsync(text: "<p>Hello World (1)!</p>");
+//			await context.Response.WriteAsync(text: "<p>Hello World (1)!</p>");
 //		});
 //	});
 
@@ -346,22 +357,20 @@ app.Run();
 //	{
 //		app.Run(handler: async context =>
 //		{
-//			await context.Response
-//				.WriteAsync(text: "<p>Hello World (2)!</p>");
+//			await context.Response.WriteAsync(text: "<p>Hello World (2)!</p>");
 //		});
 //	});
 
 //	app.Run(handler: async context =>
 //	{
-//		await context.Response
-//			.WriteAsync(text: "<h1>Error 404 - You must also write 'test1' or 'test2'!</h1>");
+//		await context.Response.WriteAsync
+//			(text: "<h1>Error 404 - You must also write 'test1' or 'test2'!</h1>");
 //	});
 //});
 
 //app.Run(handler: async context =>
 //{
-//	await context.Response
-//		.WriteAsync(text: "<h1>Error 404 - Content Not Found!</h1>");
+//	await context.Response.WriteAsync(text: "<h1>Error 404 - Content Not Found!</h1>");
 //});
 
 //app.Run();
@@ -427,7 +436,8 @@ app.Run();
 //var app =
 //	builder.Build();
 
-//app.MapWhen(predicate: context => context.Request.Query.ContainsKey(key: "age"), app =>
+//app.MapWhen(predicate: context => context.Request.Query.ContainsKey(key: "age"),
+//app =>
 //{
 //	app.Run(handler: async context =>
 //	{
@@ -452,15 +462,13 @@ app.Run();
 //{
 //	app.Run(handler: async context =>
 //	{
-//		await context.Response
-//			.WriteAsync(text: "<p>Hello World (2)!</p>");
+//		await context.Response.WriteAsync(text: "<p>Hello World (2)!</p>");
 //	});
 //});
 
 //app.Run(handler: async context =>
 //{
-//	await context.Response
-//		.WriteAsync(text: "<h1>Error 404 - Content Not Found!</h1>");
+//	await context.Response.WriteAsync(text: "<h1>Error 404 - Content Not Found!</h1>");
 //});
 
 //app.Run();
@@ -535,8 +543,8 @@ app.Run();
 
 //app.Run(handler: async context =>
 //{
-//	await context.Response
-//		.WriteAsync(text: "<h1>Error 404 - Content Not Found!</h1>");
+//	await context.Response.WriteAsync
+//		(text: "<h1>Error 404 - Content Not Found!</h1>");
 //});
 
 //app.Run();
@@ -557,6 +565,7 @@ app.Run();
 //var app =
 //	builder.Build();
 
+//// wwwroot مسیر فیزیکی
 //var contentRootPath =
 //	app.Environment.ContentRootPath;
 
@@ -564,32 +573,31 @@ app.Run();
 //{
 //	app.Run(async context =>
 //	{
+//		// فاجعه - حماقت
 //		//var physicalPathName =
 //		//	$"C:\\inetpub\\Users\\IranianExperets\\wwwroot\\index.html";
 
 //		//var physicalPathName =
-//		//	"{contentRootPath}" + "wwwroot\\index.html";
+//		//	contentRootPath + "wwwroot\\index.html";
 
 //		//var physicalPathName =
 //		//	$"{contentRootPath}wwwroot\\index.html";
 
-//		var physicalPathName =
-//			Path.Combine(contentRootPath, "wwwroot", "index.html");
+//		var physicalPathName = Path.Combine
+//			(path1: contentRootPath, path2: "wwwroot", path3: "index.html");
 
 //		if (File.Exists(path: physicalPathName))
 //		{
-//			//context.Response.StatusCode = 200;
+//			// مقدار ذیل، به طور پیش‌فرض، همیشه ۲۰۰ می‌باشد
+//			context.Response.StatusCode = 200;
 
 //			// برنامه را در دو حالت ذیل اجرا می‌کنیم
 
-//			context.Response.ContentType =
-//				"text/html"; // Mime Type = Content Type = ذات یا ماهیت فایل
+//			// Mime Type = Content Type = ذات یا ماهیت فایل
+//			context.Response.ContentType = "text/html";
+//			//context.Response.ContentType = "alaki/dolaki";
 
-//			//context.Response.ContentType =
-//			//	"alaki/dolaki"; // Mime Type = Content Type = ذات یا ماهیت فایل
-
-//			await context.Response
-//				.SendFileAsync(fileName: physicalPathName);
+//			await context.Response.SendFileAsync(fileName: physicalPathName);
 //		}
 //	});
 //});
@@ -598,24 +606,23 @@ app.Run();
 //{
 //	app.Run(handler: async context =>
 //	{
-//		var physicalPathName =
-//			Path.Combine(contentRootPath, "wwwroot\\images", "Dariush.jpg");
+//		var physicalPathName = Path.Combine
+//			(path1: contentRootPath, path2: "wwwroot\\images", path3: "Dariush.jpg");
 
 //		if (File.Exists(path: physicalPathName))
 //		{
 //			context.Response.StatusCode = 200;
 //			context.Response.ContentType = "image/jpeg";
 
-//			await context.Response
-//				.SendFileAsync(fileName: physicalPathName);
+//			await context.Response.SendFileAsync(fileName: physicalPathName);
 //		}
 //	});
 //});
 
 //app.Run(async context =>
 //{
-//	await context.Response
-//		.WriteAsync(text: "<h1>Error 404 - Content Not Found!</h1>");
+//	await context.Response.WriteAsync
+//		(text: "<h1>Error 404 - Content Not Found!</h1>");
 //});
 
 //app.Run();
@@ -638,8 +645,7 @@ app.Run();
 
 //app.Run(handler: async context =>
 //{
-//	await context.Response
-//		.WriteAsync(text: "Hello World!");
+//	await context.Response.WriteAsync(text: "Hello World!");
 //});
 
 //app.UseStaticFiles();
@@ -662,8 +668,7 @@ app.Run();
 
 //app.Run(handler: async context =>
 //{
-//	await context.Response
-//		.WriteAsync(text: "<p>Hello World (2)!</p>");
+//	await context.Response.WriteAsync(text: "<p>Hello World (2)!</p>");
 //});
 
 //app.Run();
@@ -686,8 +691,7 @@ app.Run();
 
 //app.Run(handler: async context =>
 //{
-//	await context.Response
-//		.WriteAsync(text: "<h1>Error 404 - Content Not Found!</h1>");
+//	await context.Response.WriteAsync(text: "<h1>Error 404 - Content Not Found!</h1>");
 //});
 
 //app.Run();
@@ -708,8 +712,8 @@ app.Run();
 
 //app.Run(async context =>
 //{
-//	await context.Response
-//		.WriteAsync(text: "<h1>Error 404 - Content Not Found!</h1>");
+//	await context.Response.WriteAsync
+//		(text: "<h1>Error 404 - Content Not Found!</h1>");
 //});
 
 //app.Run();
@@ -725,16 +729,39 @@ app.Run();
 //var builder =
 //	WebApplication.CreateBuilder(args: args);
 
+//// New
 //builder.Services.AddRazorPages();
 
 //var app =
 //	builder.Build();
 
-//app.UseGlobalException();
-
+//// New
 //app.MapRazorPages();
 
 //app.Run();
+// **************************************************
+// **************************************************
+// **************************************************
+
+// **************************************************
+// Learn 21
+// **************************************************
+// https://localhost:7271/index
+// **************************************************
+var builder =
+	WebApplication.CreateBuilder(args: args);
+
+builder.Services.AddRazorPages();
+
+var app =
+	builder.Build();
+
+// باید اول نوشته شود MiddleWare این
+app.UseCustomGlobalException();
+
+app.MapRazorPages();
+
+app.Run();
 // **************************************************
 // **************************************************
 // **************************************************
