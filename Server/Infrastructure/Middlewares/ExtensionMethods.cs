@@ -1,32 +1,28 @@
 ﻿using Microsoft.AspNetCore.Builder;
 
-namespace Infrastructure.Middlewares
+namespace Infrastructure.Middlewares;
+
+public static class ExtensionMethods
 {
-	public static class ExtensionMethods
+	static ExtensionMethods()
 	{
-		static ExtensionMethods()
-		{
-		}
-
-		public static Microsoft.AspNetCore.Builder.IApplicationBuilder
-			UseCustomStaticFiles(this Microsoft.AspNetCore.Builder.IApplicationBuilder app)
-		{
-			// UseMiddleware -> //using Microsoft.AspNetCore.Builder;
-			return app.UseMiddleware<CustomStaticFilesHandlerMiddleware>();
-		}
-
-		public static Microsoft.AspNetCore.Builder.IApplicationBuilder
-			UseGlobalException(this Microsoft.AspNetCore.Builder.IApplicationBuilder app)
-		{
-			// UseMiddleware -> //using Microsoft.AspNetCore.Builder;
-			return app.UseMiddleware<GlobalExceptionHandlerMiddleware>();
-		}
-
-		//public static Microsoft.AspNetCore.Builder.IApplicationBuilder
-		//	UseSomething(this Microsoft.AspNetCore.Builder.IApplicationBuilder app, int x, int y)
-		//{
-		//	// UseMiddleware -> //using Microsoft.AspNetCore.Builder;
-		//	return app.UseMiddleware<GlobalExceptionHandlerMiddleware>();
-		//}
 	}
+
+	public static IApplicationBuilder
+		UseCustomStaticFiles(this IApplicationBuilder app)
+	{
+		return app.UseMiddleware<CustomStaticFilesHandlerMiddleware>();
+	}
+
+	public static IApplicationBuilder
+		UseGlobalException(this IApplicationBuilder app)
+	{
+		return app.UseMiddleware<GlobalExceptionHandlerMiddleware>();
+	}
+
+	//public static IApplicationBuilder
+	//	UseSomething(this IApplicationBuilder app, int x, int y)
+	//{
+	//	return app.UseMiddleware<GlobalExceptionHandlerMiddleware>();
+	//}
 }
