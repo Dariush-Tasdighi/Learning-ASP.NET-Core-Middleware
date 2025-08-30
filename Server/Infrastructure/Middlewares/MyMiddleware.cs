@@ -27,13 +27,11 @@ public class MyMiddleware : object
 	public async Task InvokeAsync(HttpContext httpContext)
 	{
 		// ابتدا، دستور ذیل اجرا می‌شود
-
 		await httpContext.Response.WriteAsync(text: "<p>Hello World (1)!</p>");
 
 		await Next(context: httpContext);
 
 		// بعدی، اجرا می‌شود Middleware دستور ذیل، بعد از اجرای شدن
-
 		await httpContext.Response.WriteAsync(text: "<p>Hello World (3)!</p>");
 	}
 }

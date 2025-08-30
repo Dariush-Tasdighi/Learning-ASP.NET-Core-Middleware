@@ -4,20 +4,39 @@ namespace Infrastructure.Middlewares;
 
 public static class ExtensionMethods : object
 {
-	public static IApplicationBuilder
-		UseCustomStaticFiles(this IApplicationBuilder app)
+	public static string? Fix(this string? text)
+	{
+		if (string.IsNullOrWhiteSpace(value: text))
+		{
+			return null;
+		}
+
+		text = text.Trim();
+
+		if (text == string.Empty)
+		{
+			return null;
+		}
+
+		while (text.Contains(value: "  "))
+		{
+			text = text.Replace(oldValue: "  ", newValue: " ");
+		}
+
+		return text;
+	}
+
+	public static IApplicationBuilder UseCustomStaticFiles(this IApplicationBuilder app)
 	{
 		return app.UseMiddleware<CustomStaticFilesHandlerMiddleware>();
 	}
 
-	public static IApplicationBuilder
-		UseCustomGlobalException(this IApplicationBuilder app)
+	public static IApplicationBuilder UseCustomGlobalException(this IApplicationBuilder app)
 	{
 		return app.UseMiddleware<CustomGlobalExceptionHandlerMiddleware>();
 	}
 
-	//public static IApplicationBuilder
-	//	UseSomething(this IApplicationBuilder app, int x, int y)
+	//public static IApplicationBuilder UseSomething(this IApplicationBuilder app, int x, int y)
 	//{
 	//	return app.UseMiddleware<GlobalExceptionHandlerMiddleware>();
 	//}
