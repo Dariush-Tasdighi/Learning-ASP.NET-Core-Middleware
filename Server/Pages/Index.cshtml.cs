@@ -23,7 +23,9 @@ public class IndexModel : PageModel
 		//{
 		//}
 
-		var errorMessage = "Connection to SQL Server Error! Username: sa, Password: 12345";
+		var errorMessage =
+			"Connection to SQL Server Error! Username: sa, Password: 12345";
+
 		throw new Exception(message: errorMessage);
 	}
 }

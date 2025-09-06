@@ -1,4 +1,4 @@
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace Server.Pages.Errors;
@@ -11,6 +11,7 @@ public class Error500Model : PageModel
 
 	public void OnGet()
 	{
+		// دستور ذیل خیلی مهم است
 		HttpContext.Response.StatusCode = 500;
 	}
 }

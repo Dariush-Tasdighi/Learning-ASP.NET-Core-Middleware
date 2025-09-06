@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 
 namespace Infrastructure.Middlewares;
@@ -18,7 +19,7 @@ public class CustomGlobalExceptionHandlerMiddleware : object
 		{
 			await Next(context: httpContext);
 		}
-		catch //(System.Exception ex)
+		catch // (Exception ex)
 		{
 			// Note: Log Error (ex)!
 

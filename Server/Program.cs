@@ -2,41 +2,41 @@
 // **************************************************
 // Default
 // **************************************************
-//using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Builder;
 
-//var builder = WebApplication.CreateBuilder(args: args);
+var builder = WebApplication.CreateBuilder(args: args);
 
-//var app = builder.Build();
+var app = builder.Build();
 
-//// Get One or More
-////app.MapGet("/", () => "Hello World!");
+// Get One or More
+//app.MapGet("/", () => "Hello World!");
 
-//app.MapGet(pattern: "/", handler: () => "Hello World!");
+app.MapGet(pattern: "/", handler: () => "Hello World!");
 
-////app.MapGet(pattern: "/", handler: () =>
-////{
-////	var result = "Hello";
+//app.MapGet(pattern: "/", handler: () =>
+//{
+//	var result = "Hello";
 
-////	if (1 == 1)
-////	{
-////		result += " World!";
-////	}
+//	if (1 == 1)
+//	{
+//		result += " World!";
+//	}
 
-////	return result;
-////});
+//	return result;
+//});
 
-//// Application: Postman
+// Application: Postman
 
-//// Create
-//app.MapPost(pattern: "/", handler: () => "Hello World (Post)!");
+// Create
+app.MapPost(pattern: "/", handler: () => "Hello World (Post)!");
 
-//// Edit
-//app.MapPut(pattern: "/", handler: () => "Hello World (Put)!");
+// Edit
+app.MapPut(pattern: "/", handler: () => "Hello World (Put)!");
 
-//// Delete
-//app.MapDelete(pattern: "/", handler: () => "Hello World (Delete)!");
+// Delete
+app.MapDelete(pattern: "/", handler: () => "Hello World (Delete)!");
 
-//app.Run();
+app.Run();
 // **************************************************
 
 
@@ -764,20 +764,43 @@
 // **************************************************
 // https://localhost:7271/index
 // **************************************************
-using Infrastructure.Middlewares;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.Extensions.DependencyInjection;
+//using Infrastructure.Middlewares;
+//using Microsoft.AspNetCore.Builder;
+//using Microsoft.Extensions.DependencyInjection;
 
-var builder = WebApplication.CreateBuilder(args: args);
+//var builder = WebApplication.CreateBuilder(args: args);
 
-builder.Services.AddRazorPages();
+//builder.Services.AddRazorPages();
 
-var app = builder.Build();
+//var app = builder.Build();
 
-// باید اول نوشته شود MiddleWare این
-app.UseCustomGlobalException();
+//// باید اول نوشته شود MiddleWare این
+//app.UseCustomGlobalException();
 
-app.MapRazorPages();
+//app.MapRazorPages();
 
-app.Run();
+//app.Run();
+// **************************************************
+
+
+// **************************************************
+// Learn 22
+// **************************************************
+// https://localhost:7271/index
+// **************************************************
+//using Infrastructure.Middlewares;
+//using Microsoft.AspNetCore.Builder;
+//using Microsoft.Extensions.DependencyInjection;
+
+//var builder = WebApplication.CreateBuilder(args: args);
+
+//builder.Services.AddRazorPages();
+
+//var app = builder.Build();
+
+//app.UseCustomGlobalException();
+//app.UseCustomStaticFiles();
+//app.MapRazorPages();
+
+//app.Run();
 // **************************************************
